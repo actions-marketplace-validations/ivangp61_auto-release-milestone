@@ -1,0 +1,28 @@
+name: Test
+on:
+  create:
+  push:
+    branches:
+      - master
+  milestone:
+    types: [closed]
+jobs:
+  test:
+    name: Test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    steps:
+      - name: Get the sources
+        uses: actions/checkout@v1
+      - name: Create a release draft for a version tag
+        id: create-release-draft
+        uses: ./
+        with:
+          repo-token: ${{secrets.GITHUB_TOKEN}}
+      - name: Print the URL of the release draft
+        run: echo ${{ steps.create-release-draft.outputs.release-url }}
+      - name: Print the event name
+        if: steps.create-release-draft.outputs.event-name != ''
+        run: echo ${{ steps.create-release-draft.outputs.event-name }}
