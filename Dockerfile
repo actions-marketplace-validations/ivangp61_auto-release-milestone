@@ -9,7 +9,7 @@ LABEL maintainer="Ivan Gonzalez Perez"
 
 RUN apt-get update && apt-get install -y jq
 # RUN yarn install --ignore-engines
-RUN dotnet tool install -g GitReleaseManager.Tool
+RUN dotnet tool install --global GitReleaseManager.Tool
 
 ENV PATH /root/.dotnet/tools:$PATH
 
