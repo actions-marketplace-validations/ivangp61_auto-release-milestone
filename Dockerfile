@@ -8,7 +8,7 @@ LABEL repository="https://github.com/ivangp61/auto-release-milestone.git"
 LABEL maintainer="Ivan Gonzalez Perez"
 
 RUN apt-get update && apt-get install -y jq
-RUN dotnet tool install -g GitReleaseManager.Tool --version 0.17.0
+RUN dotnet tool install -g GitReleaseManager.Tool --version v7.0
 
 ENV PATH /root/.dotnet/tools:$PATH
 
