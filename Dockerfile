@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0
+FROM mcr.microsoft.com/dotnet/sdk:3.1
 
 LABEL "com.github.actions.name"="Auto Release Milestone"
 LABEL "com.github.actions.name"="Drafts a GitHub release based on a newly closed milestone"
@@ -8,8 +8,7 @@ LABEL repository="https://github.com/ivangp61/auto-release-milestone.git"
 LABEL maintainer="Ivan Gonzalez Perez"
 
 RUN apt-get update && apt-get install -y jq
-RUN dotnet tool install -g GitReleaseManager.Tool
-# --version 0.12.0
+RUN dotnet tool install -g GitReleaseManager.Tool --version 0.12.0
 
 # ENV PATH /root/.dotnet/tools:$PATH
 ENV PATH="${PATH}:/${HOME}/.dotnet/tools"
